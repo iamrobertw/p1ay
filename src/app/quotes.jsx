@@ -1,13 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { MotiView } from "moti";
 import { useEffect, useRef, useState } from "react";
-import {
-  ActivityIndicator,
-  Switch,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { ActivityIndicator, Switch, Text, View } from "react-native";
+import { Button } from "../components/Button";
 import { ScreenHeader } from "../components/ScreenHeader";
 import { fetchRandomQuote } from "../utils/api";
 import tw from "../utils/tw";
@@ -94,15 +89,14 @@ export default function QuotesScreen() {
         />
       </View>
 
-      <TouchableOpacity
-        style={tw`bg-indigo-600 p-4 rounded-lg mb-4`}
+      <Button
+        title={isLoading ? "Loading..." : "Generate New Quote"}
         onPress={handleNewQuote}
+        variant="info"
+        fullWidth
         disabled={isLoading}
-      >
-        <Text style={tw`text-white font-medium text-center`}>
-          {isLoading ? "Loading..." : "Generate New Quote"}
-        </Text>
-      </TouchableOpacity>
+        isLoading={isLoading}
+      />
     </View>
   );
 }

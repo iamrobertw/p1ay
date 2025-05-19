@@ -6,9 +6,9 @@ import {
   Platform,
   Text,
   TextInput,
-  TouchableOpacity,
   View,
 } from "react-native";
+import { Button } from "../components/Button";
 import { ScreenHeader } from "../components/ScreenHeader";
 import tw from "../utils/tw";
 import { formSchema } from "../utils/validationSchema";
@@ -99,12 +99,12 @@ export default function FormScreen() {
               )}
             </View>
 
-            <TouchableOpacity
-              style={tw`bg-blue-500 p-3 rounded-lg`}
+            <Button
+              title="Submit"
               onPress={handleSubmit(onSubmit)}
-            >
-              <Text style={tw`text-white font-medium text-center`}>Submit</Text>
-            </TouchableOpacity>
+              variant="primary"
+              fullWidth
+            />
           </View>
         )}
       </View>
