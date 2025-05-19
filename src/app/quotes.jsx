@@ -89,14 +89,16 @@ export default function QuotesScreen() {
         />
       </View>
 
-      <Button
-        title={isLoading ? "Loading..." : "Generate New Quote"}
-        onPress={handleNewQuote}
-        variant="info"
-        fullWidth
-        disabled={isLoading}
-        isLoading={isLoading}
-      />
+      <View style={tw`mb-8`}>
+        <Button
+          title={isLoading ? "Loading..." : "Generate New Quote"}
+          onPress={handleNewQuote}
+          variant="info"
+          fullWidth
+          disabled={isLoading}
+          isLoading={isLoading}
+        />
+      </View>
     </View>
   );
 }
