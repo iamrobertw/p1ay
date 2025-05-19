@@ -1,6 +1,7 @@
 import { FontAwesome } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { Text, TouchableOpacity, View } from "react-native";
+import { ScreenHeader } from "../components/ScreenHeader";
 import tw from "../utils/tw";
 
 export default function Index() {
@@ -10,9 +11,10 @@ export default function Index() {
     <View
       style={tw`flex-1 items-center justify-center p-4 bg-white dark:bg-gray-900`}
     >
-      <Text style={tw`text-2xl font-bold text-gray-800 dark:text-white mb-10`}>
-        My Mobile App
-      </Text>
+      <ScreenHeader
+        title="My Mobile App"
+        subtitle="A simple demo app with multiple screens"
+      />
 
       <View style={tw`w-full max-w-sm gap-4`}>
         <TouchableOpacity

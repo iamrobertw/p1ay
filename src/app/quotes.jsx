@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { ScreenHeader } from "../components/ScreenHeader";
 import { fetchRandomQuote } from "../utils/api";
 import tw from "../utils/tw";
 
@@ -46,11 +47,7 @@ export default function QuotesScreen() {
 
   return (
     <View style={tw`flex-1 p-4 bg-white dark:bg-gray-900`}>
-      <Text
-        style={tw`text-2xl font-bold text-center text-gray-800 dark:text-white mb-8`}
-      >
-        Random Quote
-      </Text>
+      <ScreenHeader title="Random Quote" subtitle="Quotes from DummyJSON API" />
 
       <View style={tw`flex-1 justify-center`}>
         {isLoading ? (

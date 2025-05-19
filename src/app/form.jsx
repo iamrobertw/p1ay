@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { ScreenHeader } from "../components/ScreenHeader";
 import tw from "../utils/tw";
 import { formSchema } from "../utils/validationSchema";
 
@@ -38,11 +39,7 @@ export default function FormScreen() {
       style={tw`flex-1`}
     >
       <View style={tw`flex-1 p-4 bg-white dark:bg-gray-900`}>
-        <Text
-          style={tw`text-2xl font-bold text-center text-gray-800 dark:text-white mb-6`}
-        >
-          Form
-        </Text>
+        <ScreenHeader title="Form" subtitle="Please fill out the form below" />
 
         {isSubmitted ? (
           <View style={tw`bg-green-100 p-4 rounded-lg mb-4`}>
