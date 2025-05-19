@@ -20,6 +20,7 @@ export default function FormScreen() {
     control,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({
     resolver: yupResolver(formSchema),
     defaultValues: {
@@ -31,6 +32,14 @@ export default function FormScreen() {
   const onSubmit = (data) => {
     console.log(data);
     setIsSubmitted(true);
+  };
+
+  const handleReset = () => {
+    reset({
+      name: "",
+      email: "",
+    });
+    setIsSubmitted(false);
   };
 
   return (
@@ -50,7 +59,7 @@ export default function FormScreen() {
               <Button
                 title="Fill out form again"
                 variant="success"
-                onPress={() => setIsSubmitted(false)}
+                onPress={handleReset}
               />
             </View>
           </View>
