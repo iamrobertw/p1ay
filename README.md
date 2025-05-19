@@ -91,6 +91,7 @@ src/
 │   └── quotes.jsx    # Quotes screen
 ├── components/       # Reusable components
 │   ├── Button.jsx
+│   ├── ErrorBoundary.jsx
 │   └── ScreenHeader.jsx
 └── utils/            # Utility functions and configuration
     ├── api.js        # API service
