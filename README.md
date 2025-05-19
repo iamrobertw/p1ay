@@ -1,46 +1,103 @@
-# Welcome to your Expo app 👋
+# Mobile App Demo with React Native and Expo
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A simple demo application built with React Native and Expo, featuring form validation, API integration, and animations.
 
-## Get started
+## Features
 
-1. Install dependencies
+- 📱 Three distinct screens with different functionalities
+- 🔄 Navigation between screens
+- 📝 Form with validation using Yup and React Hook Form
+- 🌐 API integration with React Query
+- ✨ Animations with Moti
+- 🎨 Styled with Tailwind CSS (twrnc)
+- 🌓 Light/dark mode support
 
-   ```bash
+## Screens
+
+1. **Home Screen**:
+
+   - App title
+   - Navigation buttons with icons
+
+2. **Form Screen**:
+
+   - Form with name and email fields
+   - Form validation
+   - Success message on valid submission
+
+3. **Quotes Screen**:
+   - Random quote fetched from API
+   - Loading state and error handling
+   - Generate new quote button
+   - Auto-refresh feature
+   - Animated quote appearance
+
+## Technologies Used
+
+- Expo Router for navigation
+- React Query for data fetching
+- Yup for form validation
+- React Hook Form for form management
+- Tailwind CSS (twrnc) for styling
+- Moti for animations
+
+## Getting Started
+
+### Prerequisites
+
+Make sure you have the following installed:
+
+- Node.js
+- npm or yarn
+- Expo CLI
+
+### Installation
+
+1. Clone the repository
+2. Install dependencies:
+
+   ```
    npm install
    ```
 
-2. Start the app
+   or
 
-   ```bash
-   npx expo start
+   ```
+   yarn install
    ```
 
-In the output, you'll find options to open the app in a
+3. Start the development server:
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+   ```
+   npm start
+   ```
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+   or
 
-## Get a fresh project
+   ```
+   yarn start
+   ```
 
-When you're ready, run:
+4. Open the app on your device using Expo Go app by scanning the QR code, or run on an emulator.
 
-```bash
-npm run reset-project
+## Project Structure
+
 ```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+src/
+├── app/              # App screens
+│   ├── _layout.jsx   # Root layout with navigation setup
+│   ├── index.jsx     # Home screen
+│   ├── form.jsx      # Form screen
+│   └── quotes.jsx    # Quotes screen
+├── components/       # Reusable components
+│   ├── Button.jsx
+│   └── ScreenHeader.jsx
+└── utils/            # Utility functions and configuration
+    ├── api.js        # API service
+    ├── queryClient.js # React Query setup
+    ├── tw.js         # Tailwind setup
+    └── validationSchema.js # Form validation schema
+```
 
 ## Join the community
 

@@ -46,6 +46,13 @@ export default function FormScreen() {
             <Text style={tw`text-green-700 font-medium text-center`}>
               Thank you, your data has been saved!
             </Text>
+            <View style={tw`mt-4`}>
+              <Button
+                title="Fill out form again"
+                variant="success"
+                onPress={() => setIsSubmitted(false)}
+              />
+            </View>
           </View>
         ) : (
           <View style={tw`w-full`}>
