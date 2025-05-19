@@ -1,9 +1,20 @@
 import { useQuery } from "@tanstack/react-query";
-import { ActivityIndicator, Text, TouchableOpacity, View } from "react-native";
+import { MotiView } from "moti";
+import { useEffect, useRef, useState } from "react";
+import {
+  ActivityIndicator,
+  Switch,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { fetchRandomQuote } from "../utils/api";
 import tw from "../utils/tw";
 
 export default function QuotesScreen() {
+  const [autoRefresh, setAutoRefresh] = useState(false);
+  const intervalRef = useRef(null);
+
   const { data, isLoading, isError, error, refetch } = useQuery({
     queryKey: ["randomQuote"],
     queryFn: fetchRandomQuote,
@@ -12,6 +23,26 @@ export default function QuotesScreen() {
   const handleNewQuote = () => {
     refetch();
   };
+
+  // Setup auto-refresh
+  useEffect(() => {
+    if (autoRefresh) {
+      intervalRef.current = setInterval(() => {
+        refetch();
+      }, 10000); // 10 seconds
+    } else {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    }
+
+    // Cleanup on unmount
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [autoRefresh, refetch]);
 
   return (
     <View style={tw`flex-1 p-4 bg-white dark:bg-gray-900`}>
@@ -31,8 +62,12 @@ export default function QuotesScreen() {
             </Text>
           </View>
         ) : (
-          <View
+          <MotiView
             style={tw`bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-sm`}
+            from={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ type: "timing", duration: 500 }}
+            key={data?.id || Math.random()}
           >
             <Text
               style={tw`text-xl text-gray-800 dark:text-white font-medium italic mb-4`}
@@ -44,8 +79,22 @@ export default function QuotesScreen() {
             >
               — {data?.author}
             </Text>
-          </View>
+          </MotiView>
         )}
+      </View>
+
+      <View
+        style={tw`mb-4 flex-row items-center justify-between bg-gray-100 dark:bg-gray-800 p-3 rounded-lg`}
+      >
+        <Text style={tw`text-gray-700 dark:text-gray-300 font-medium`}>
+          Auto-refresh every 10 seconds
+        </Text>
+        <Switch
+          value={autoRefresh}
+          onValueChange={setAutoRefresh}
+          trackColor={{ false: "#cbd5e1", true: "#818cf8" }}
+          thumbColor={autoRefresh ? "#4f46e5" : "#f4f4f5"}
+        />
       </View>
 
       <TouchableOpacity
