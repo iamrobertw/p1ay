@@ -1,5 +1,5 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import {
   KeyboardAvoidingView,
@@ -11,17 +11,17 @@ import {
 import { Button } from "../components/Button";
 import { ScreenHeader } from "../components/ScreenHeader";
 import tw from "../utils/tw";
-import { formSchema } from "../utils/validationSchema";
+import { FormData, formSchema } from "../utils/validationSchema";
 
-export default function FormScreen() {
-  const [isSubmitted, setIsSubmitted] = useState(false);
+export default function FormScreen(): React.JSX.Element {
+  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
   const {
     control,
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm({
+  } = useForm<FormData>({
     resolver: yupResolver(formSchema),
     defaultValues: {
       name: "",
@@ -29,12 +29,12 @@ export default function FormScreen() {
     },
   });
 
-  const onSubmit = (data) => {
+  const onSubmit = (data: FormData): void => {
     console.log(data);
     setIsSubmitted(true);
   };
 
-  const handleReset = () => {
+  const handleReset = (): void => {
     reset({
       name: "",
       email: "",

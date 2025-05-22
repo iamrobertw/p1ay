@@ -1,5 +1,31 @@
-import { ActivityIndicator, Text, TouchableOpacity } from "react-native";
+import React, { ReactNode } from "react";
+import {
+  ActivityIndicator,
+  Text,
+  TouchableOpacity,
+  TouchableOpacityProps,
+} from "react-native";
 import tw from "../utils/tw";
+
+type ButtonVariant =
+  | "primary"
+  | "secondary"
+  | "success"
+  | "danger"
+  | "warning"
+  | "info";
+type ButtonSize = "small" | "medium" | "large";
+
+export interface ButtonProps extends Omit<TouchableOpacityProps, "disabled"> {
+  title: string;
+  onPress: () => void;
+  variant?: ButtonVariant;
+  size?: ButtonSize;
+  isLoading?: boolean;
+  disabled?: boolean;
+  fullWidth?: boolean;
+  leftIcon?: ReactNode;
+}
 
 export function Button({
   title,
@@ -11,10 +37,10 @@ export function Button({
   fullWidth = false,
   leftIcon,
   ...rest
-}) {
+}: ButtonProps) {
   // Determine button styles based on variant
   const getVariantStyles = () => {
-    const variants = {
+    const variants: Record<ButtonVariant, string> = {
       primary: "bg-blue-500",
       secondary: "bg-gray-500",
       success: "bg-green-500",
@@ -28,7 +54,7 @@ export function Button({
 
   // Determine padding based on size
   const getSizeStyles = () => {
-    const sizes = {
+    const sizes: Record<ButtonSize, string> = {
       small: "py-2 px-3",
       medium: "py-3 px-4",
       large: "py-4 px-6",

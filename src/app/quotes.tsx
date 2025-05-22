@@ -1,22 +1,22 @@
 import { useQuery } from "@tanstack/react-query";
 import { MotiView } from "moti";
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { ActivityIndicator, Switch, Text, View } from "react-native";
 import { Button } from "../components/Button";
 import { ScreenHeader } from "../components/ScreenHeader";
-import { fetchRandomQuote } from "../utils/api";
+import { fetchRandomQuote, Quote } from "../utils/api";
 import tw from "../utils/tw";
 
-export default function QuotesScreen() {
-  const [autoRefresh, setAutoRefresh] = useState(false);
-  const intervalRef = useRef(null);
+export default function QuotesScreen(): React.JSX.Element {
+  const [autoRefresh, setAutoRefresh] = useState<boolean>(false);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  const { data, isLoading, isError, error, refetch } = useQuery({
+  const { data, isLoading, isError, error, refetch } = useQuery<Quote, Error>({
     queryKey: ["randomQuote"],
     queryFn: fetchRandomQuote,
   });
 
-  const handleNewQuote = () => {
+  const handleNewQuote = (): void => {
     refetch();
   };
 
@@ -64,7 +64,7 @@ export default function QuotesScreen() {
             <Text
               style={tw`text-xl text-gray-800 dark:text-white font-medium italic mb-4`}
             >
-              "{data?.quote}"
+              &ldquo;{data?.quote}&rdquo;
             </Text>
             <Text
               style={tw`text-right text-gray-600 dark:text-gray-400 font-medium`}

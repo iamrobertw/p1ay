@@ -1,10 +1,16 @@
 // API service for quotes
 
+export interface Quote {
+  id: number;
+  quote: string;
+  author: string;
+}
+
 /**
  * Fetch a random quote from the API
- * @returns {Promise<Object>} Quote object
+ * @returns {Promise<Quote>} Quote object
  */
-export const fetchRandomQuote = async () => {
+export const fetchRandomQuote = async (): Promise<Quote> => {
   try {
     const response = await fetch("https://dummyjson.com/quotes/random");
 

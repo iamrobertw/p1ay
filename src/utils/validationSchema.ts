@@ -1,5 +1,10 @@
 import * as Yup from "yup";
 
+export interface FormData {
+  name: string;
+  email: string;
+}
+
 // Form validation schema
 export const formSchema = Yup.object().shape({
   name: Yup.string()

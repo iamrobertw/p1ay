@@ -1,7 +1,12 @@
 import { Text, View } from "react-native";
 import tw from "../utils/tw";
 
-export function ScreenHeader({ title, subtitle }) {
+type ScreenHeaderProps = {
+  title: string;
+  subtitle?: string;
+};
+
+export function ScreenHeader({ title, subtitle }: ScreenHeaderProps) {
   return (
     <View style={tw`mb-6`}>
       <Text
