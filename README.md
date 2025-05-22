@@ -11,6 +11,7 @@ A simple demo application built with React Native and Expo, featuring form valid
 - ✨ Animations with Moti
 - 🎨 Styled with Tailwind CSS (twrnc)
 - 🌓 Light/dark mode support
+- 🛡️ TypeScript for type safety
 
 ## Screens
 
@@ -34,6 +35,7 @@ A simple demo application built with React Native and Expo, featuring form valid
 
 ## Technologies Used
 
+- TypeScript for type safety
 - Expo Router for navigation
 - React Query for data fetching
 - Yup for form validation
@@ -85,19 +87,19 @@ Make sure you have the following installed:
 ```
 src/
 ├── app/              # App screens
-│   ├── _layout.jsx   # Root layout with navigation setup
-│   ├── index.jsx     # Home screen
-│   ├── form.jsx      # Form screen
-│   └── quotes.jsx    # Quotes screen
+│   ├── _layout.tsx   # Root layout with navigation setup
+│   ├── index.tsx     # Home screen
+│   ├── form.tsx      # Form screen
+│   └── quotes.tsx    # Quotes screen
 ├── components/       # Reusable components
-│   ├── Button.jsx
-│   ├── ErrorBoundary.jsx
-│   └── ScreenHeader.jsx
+│   ├── Button.tsx
+│   ├── ErrorBoundary.tsx
+│   └── ScreenHeader.tsx
 └── utils/            # Utility functions and configuration
-    ├── api.js        # API service
-    ├── queryClient.js # React Query setup
-    ├── tw.js         # Tailwind setup
-    └── validationSchema.js # Form validation schema
+    ├── api.ts        # API service
+    ├── queryClient.ts # React Query setup
+    ├── tw.ts         # Tailwind setup
+    └── validationSchema.ts # Form validation schema
 ```
 
 ## Join the community
